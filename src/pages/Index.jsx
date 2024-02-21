@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { Box, ChakraProvider, Input, Tab, TabList, TabPanel, TabPanels, Tabs, Text, VStack, HStack, Button } from "@chakra-ui/react";
+import { Box, ChakraProvider, Input, Tab, TabList, TabPanel, TabPanels, Tabs, Text, VStack, HStack, Button, IconButton } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
+import { FaCog } from "react-icons/fa";
 import { FaStickyNote, FaCheckCircle, FaRegTrashAlt } from "react-icons/fa";
 
 const Index = () => {
@@ -35,7 +37,10 @@ const Index = () => {
 
   return (
     <ChakraProvider>
-      <Box height="100vh" width="100vw">
+      <Box height="100vh" width="100vw" position="relative">
+        <Link to="/settings">
+          <IconButton icon={<FaCog />} isRound size="lg" position="absolute" bottom={4} left={4} zIndex={2} />
+        </Link>
         <Tabs isFitted variant="enclosed" index={tabIndex} onChange={(index) => setTabIndex(index)} position="fixed" width="full" zIndex={1}>
           <TabList>
             <Tab>Input</Tab>
