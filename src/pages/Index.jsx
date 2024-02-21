@@ -38,9 +38,10 @@ const Index = () => {
       <Box>
         <Tabs isFitted variant="enclosed" index={tabIndex} onChange={(index) => setTabIndex(index)}>
           <TabList>
-            <Tab>All</Tab>
-            <Tab>Active</Tab>
-            <Tab>Completed</Tab>
+            <Tab>Input</Tab>
+            <Tab>Urgent</Tab>
+            <Tab>Categorized</Tab>
+            <Tab>Recommendations</Tab>
           </TabList>
 
           {/* Rest of the code remains unchanged */}
@@ -49,8 +50,6 @@ const Index = () => {
           placeholder="Type your note here..."
           value={inputValue}
           onChange={handleInputChange}
-          height="100vh"
-          width="100vw"
           onKeyPress={(event) => {
             if (event.key === "Enter") {
               addNote();
