@@ -35,8 +35,8 @@ const Index = () => {
 
   return (
     <ChakraProvider>
-      <Box>
-        <Tabs isFitted variant="enclosed" index={tabIndex} onChange={(index) => setTabIndex(index)}>
+      <Box height="100vh" width="100vw">
+        <Tabs isFitted variant="enclosed" index={tabIndex} onChange={(index) => setTabIndex(index)} position="fixed" width="full" zIndex={1}>
           <TabList>
             <Tab>Input</Tab>
             <Tab>Urgent</Tab>
@@ -46,16 +46,23 @@ const Index = () => {
 
           {/* Rest of the code remains unchanged */}
         </Tabs>
-        <Input
-          placeholder="Type your note here..."
-          value={inputValue}
-          onChange={handleInputChange}
-          onKeyPress={(event) => {
-            if (event.key === "Enter") {
-              addNote();
-            }
-          }}
-        />
+        <Box pt="48">
+          {" "}
+          {/* Assuming tab height to be approximately 48px, which can be adjusted based on actual height */}
+          <Input
+            placeholder="Type your note here..."
+            value={inputValue}
+            onChange={handleInputChange}
+            onKeyPress={(event) => {
+              if (event.key === "Enter") {
+                addNote();
+              }
+            }}
+            size="lg"
+            height="calc(100vh - 48px)" /* Adjust the 48px if the tab height is different */
+            width="full"
+          />
+        </Box>
       </Box>
     </ChakraProvider>
   );
