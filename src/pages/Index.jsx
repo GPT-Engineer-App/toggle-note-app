@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Button, ChakraProvider, Input, Tab, TabList, TabPanel, TabPanels, Tabs, Text, VStack, HStack } from "@chakra-ui/react";
+import { Box, ChakraProvider, Input, Tab, TabList, TabPanel, TabPanels, Tabs, Text, VStack, HStack, Button } from "@chakra-ui/react";
 import { FaStickyNote, FaCheckCircle, FaRegTrashAlt } from "react-icons/fa";
 
 const Index = () => {
@@ -37,10 +37,16 @@ const Index = () => {
     <ChakraProvider>
       <Box p={4}>
         <VStack spacing={4}>
-          <Input placeholder="Type your note here..." value={inputValue} onChange={handleInputChange} />
-          <Button leftIcon={<FaStickyNote />} colorScheme="blue" onClick={addNote}>
-            Add Note
-          </Button>
+          <Input
+            placeholder="Type your note here..."
+            value={inputValue}
+            onChange={handleInputChange}
+            onKeyPress={(event) => {
+              if (event.key === "Enter") {
+                addNote();
+              }
+            }}
+          />
 
           <Tabs isFitted variant="enclosed" index={tabIndex} onChange={(index) => setTabIndex(index)}>
             <TabList>
